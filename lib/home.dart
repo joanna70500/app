@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'weather_api.dart';
 import 'weather_model.dart';
 import 'package:lottie/lottie.dart';
-import 'getDay.dart';
+import 'get_day.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title});
+  const HomePage({super.key, required this.title});
 
   final String title;
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 
 
 
@@ -33,7 +34,9 @@ class _HomePageState extends State<HomePage> {
         _weather = weather;
       });
     } catch (e) {
-      print(e);
+
+        // ignore: avoid_print
+        print(e);
     }
   }
 
@@ -48,7 +51,7 @@ class _HomePageState extends State<HomePage> {
   void _navigateToLocationWeatherPage() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LocationWeatherPage(title: '')), // Przejście do strony wyszukiwania lokalizacji
+      MaterialPageRoute(builder: (context) => const LocationWeatherPage(title: '')), // Przejście do strony wyszukiwania lokalizacji
     );
   }
 
@@ -62,10 +65,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(_weather?.city ?? "ładowanie lokalizacji...", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold,),),
-            Text('${_weather?.temperature.round()} °C', style: TextStyle(fontSize: 30),),
+            Text(_weather?.city ?? "Ładowanie lokalizacji...", style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold,),),
+            Text('${_weather?.temperature.round()} °C', style: const TextStyle(fontSize: 30),),
             Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -73,12 +76,12 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => const ForecastPage(title: '')),
                 );
               },
-              child: Text('Pokaż prognozę na kolejne dni', style: TextStyle(fontSize: 15),),
+              child: const Text('Pokaż prognozę na kolejne dni', style: TextStyle(fontSize: 15),),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: _navigateToLocationWeatherPage, // Przejście do strony wyszukiwania lokalizacji
-              child: Text('Sprawdź pogodę w wybranej lokalizacji', style: TextStyle(fontSize: 15),),
+              child: const Text('Sprawdź pogodę w wybranej lokalizacji', style: TextStyle(fontSize: 15),),
             ),
           ],
         ),

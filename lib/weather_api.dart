@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -9,6 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:universal_html/html.dart' as html;
 
 class WeatherApi {
+  // ignore: constant_identifier_names
   static const BASE_URL = 'https://api.openweathermap.org/data/2.5';
   final String apiKey;
 
@@ -34,6 +37,8 @@ class WeatherApi {
       // await saveResponseToFile('forecast_${latitude}_${longitude}.json', jsonResponse);
       return Forecast.fromJson(jsonResponse);
     } else {
+      // ignore: duplicate_ignore
+      // ignore: avoid_print
       print('Error: ${response.statusCode} - ${response.body}');
       throw Exception('Failed to load forecast data');
     }

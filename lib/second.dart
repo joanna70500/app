@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'weather_api.dart';
-import 'weather_model.dart';
 import 'forecast_model.dart';
-import 'getDay.dart';
+import 'get_day.dart';
 
 
 class ForecastPage extends StatefulWidget {
@@ -72,11 +73,11 @@ class _ForecastPageState extends State<ForecastPage> {
       body: Align(
         alignment: Alignment.topCenter,
         child: _forecast == null
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : SingleChildScrollView(
                 child: Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(top: 20.0, bottom: 30.0), // Add spacing before and after the text
                       child: Text(
                         'Prognoza pogody na nadchodzące dni dla twojej lokalizacji ',
@@ -88,7 +89,8 @@ class _ForecastPageState extends State<ForecastPage> {
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
                         columnSpacing: 10.0,
-                        dataRowHeight: 90.0,
+                        dataRowMinHeight: 90.0,
+                        dataRowMaxHeight: 90.0,
                         columns: const <DataColumn>[
                           DataColumn(label: Text('Dzień', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),)),
                           DataColumn(label: Text('')),
@@ -99,17 +101,17 @@ class _ForecastPageState extends State<ForecastPage> {
                         rows: _forecast!.daily.map((day) {
                           return DataRow(
                             cells: <DataCell>[
-                              DataCell(Center(child: Text(getWeekDay(day.date), style: TextStyle(fontSize: 15),))),
+                              DataCell(Center(child: Text(getWeekDay(day.date), style: const TextStyle(fontSize: 15),))),
                               DataCell(Center(child: 
                                 day.iconUrl != null
                                     ? Transform.scale(
                                         scale: 1.0, // Adjust the scale factor as per your requirement
                                         child: Image.network(day.iconUrl!),
                                       )
-                                    : CircularProgressIndicator(), // Show loading indicator if icon URL is not available
+                                    : const CircularProgressIndicator(), // Show loading indicator if icon URL is not available
                               )),
-                              DataCell(Center(child:Text('${day.tempMin.round()} - ${day.tempMax.round()}', style: TextStyle(fontSize: 15),))),
-                              DataCell(Center(child:Text(day.cloudiness.toString(), style: TextStyle(fontSize: 15),))),
+                              DataCell(Center(child:Text('${day.tempMin.round()} - ${day.tempMax.round()}', style: const TextStyle(fontSize: 15),))),
+                              DataCell(Center(child:Text(day.cloudiness.toString(), style: const TextStyle(fontSize: 15),))),
 
                             ],
                           );
