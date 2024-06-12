@@ -11,6 +11,7 @@ class Forecast {
     return Forecast(daily: daily);
   }
 }
+
 class DailyForecast {
   final DateTime date;
   final double tempMin;

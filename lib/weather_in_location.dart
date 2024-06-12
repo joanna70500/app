@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'weather_api.dart';
-import 'weather_model.dart';
-import 'forecast_model.dart';
+import 'models/weather_model.dart';
+import 'models/forecast_model.dart';
 import 'get_day.dart';
 import 'package:lottie/lottie.dart';
 

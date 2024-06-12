@@ -1,9 +1,9 @@
 import 'package:app/weather_in_location.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'actual_weather.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
-import 'second.dart';
+import 'actual_forecast.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // Dodaj tę linię

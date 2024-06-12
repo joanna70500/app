@@ -1,8 +1,8 @@
-import 'package:app/second.dart';
+import 'package:app/actual_forecast.dart';
 import 'package:app/weather_in_location.dart';
 import 'package:flutter/material.dart';
 import 'weather_api.dart';
-import 'weather_model.dart';
+import 'models/weather_model.dart';
 import 'package:lottie/lottie.dart';
 import 'get_day.dart';
 
