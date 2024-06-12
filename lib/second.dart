@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'weather_api.dart';
 import 'weather_model.dart';
+import 'forecast_model.dart';
 import 'getDay.dart';
 
 
